@@ -54,17 +54,49 @@ if (numActive < dungeonLength) {
     for (let i = 0; i < branchTips.length; i++) {
         //Decide which direction to branch...
         //Define the ID of each of the possible directions
-        let up = parseInt(branchTips[i].getAttribute("id")) - numTiles;
-        console.log(up);
-        let right = parseInt(branchTips[i].getAttribute("id")) + 1;
-        console.log(right);
-        let down = parseInt(branchTips[i].getAttribute("id")) + numTiles;
-        console.log(down);
-        let left = parseInt(branchTips[i].getAttribute("id")) - 1;
-        console.log(left);
-        //Exclude a direction if it would result in a merged active path
+        let num = parseInt(branchTips[i].getAttribute("id"));
+        let numString = num.toString();
+        if (num < 10) {
+            numString = "0"+num.toString();
+        };
+        let num0 = parseInt(numString[0]);
+        let num1 = parseInt(numString[1]);
+
+        let up = num - numTiles;
+        console.log("up id: "+up);
+        let right = num + 1;
+        console.log("right id: "+right);
+        let down = num + numTiles;
+        console.log("down id: "+down);
+        let left = num - 1;
+        console.log("left id: "+left);
+
+        //Send direction IDs to an array
+        let directions = [up, right, down, left];
         
         //Exclude a direction if it would end outside the grid section
+        console.log("numString: "+numString, "num0: "+num0, "num1: "+num1);
+        if (num1 === (numTiles - 1) || document.getElementById(right).classList.contains("active")) {
+            console.log("Cannot go right.");
+            directions.pop(right);
+        };
+        if (num1 === 0 || document.getElementById(left).classList.contains("active")) {
+            console.log("Cannot go left.");
+            directions.pop(left);
+        };
+        if (num0 === (numTiles - 1) || document.getElementById(down).classList.contains("active")) {
+            console.log("Cannot go down.");
+            directions.pop(down)
+        };
+        if (num0 === 0 || document.getElementById(up).classList.contains("active")) {
+            console.log("Cannot go up.");
+            directions.pop(up);
+        }
+
+        console.log(directions);
+
+        //Select which direction to branch from out of the list of possible directions
+        
         
         //Add the classes "active", "branch-tip" to the branched ends
 
