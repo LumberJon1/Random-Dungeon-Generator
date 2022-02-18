@@ -113,6 +113,9 @@ for (; numActive < dungeonLength; numActive++) {
         }
 
         let selected = directions.splice(Math.floor(Math.random() * directions.length), 1);
+        if (selected < 10) {
+            selected = "0"+selected.toString();
+        };
         console.log(selected);
 
         //Remove the branch-tip class
