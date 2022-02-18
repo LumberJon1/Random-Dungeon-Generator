@@ -73,32 +73,52 @@ if (numActive < dungeonLength) {
 
         //Send direction IDs to an array
         let directions = [up, right, down, left];
+        console.log("Directions before splice: "+directions);
         
         //Exclude a direction if it would end outside the grid section
         console.log("numString: "+numString, "num0: "+num0, "num1: "+num1);
-        if (num1 === (numTiles - 1) || document.getElementById(right).classList.contains("active")) {
+        if (num1 === (numTiles - 1)) {
             console.log("Cannot go right.");
-            directions.pop(right);
+            directions.splice(1, 1);
         };
-        if (num1 === 0 || document.getElementById(left).classList.contains("active")) {
+        if (num1 === 0) {
             console.log("Cannot go left.");
-            directions.pop(left);
+            directions.splice(3, 1);
         };
-        if (num0 === (numTiles - 1) || document.getElementById(down).classList.contains("active")) {
+        if (num0 === (numTiles - 1)) {
             console.log("Cannot go down.");
-            directions.pop(down)
+            directions.splice(2, 1)
         };
-        if (num0 === 0 || document.getElementById(up).classList.contains("active")) {
+        if (num0 === 0) {
             console.log("Cannot go up.");
-            directions.pop(up);
+            console.log(up);
+            console.log(directions[up]);
+            directions.splice(0, 1);
+
         }
 
         console.log(directions);
 
         //Select which direction to branch from out of the list of possible directions
-        
-        
+
+        for (let i = 0; i < directions.length; i++) {
+            console.log("Directions[i]: "+directions[i]);
+            let direction = directions[i];
+            if (direction < 10) {
+                direction = "0"+direction;
+            }
+            if (document.getElementById(direction).classList.contains("active")) {
+                console.log("Cannot merge with active tile");
+            }
+        }
+
+        let selected = directions.splice(Math.floor(Math.random() * directions.length), 1);
+        console.log(selected);
+
+        //Remove the branch-tip class
+        document.getElementById(numString).setAttribute("class", "active");
         //Add the classes "active", "branch-tip" to the branched ends
+        document.getElementById(selected).setAttribute("class", "active branch-tip");
 
     };
 
