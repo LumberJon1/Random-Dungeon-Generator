@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#canvas-section {
+#dungeon-section {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -12,6 +12,6 @@
     justify-content: center;
 }
 
-#canvas {
+#dungeon-grid-div {
     border: 2px solid black;
 }
