@@ -28,6 +28,7 @@ for (let i = 0; i < numTiles; i++) {
         tile.style.top = (i * tileHeight)+"px";
         tile.style.width = (tileWidth)+"px";
         tile.style.height = (tileHeight)+"px";
+        tile.setAttribute("id", (i.toString())+(col.toString()));
         dungeonGrid.appendChild(tile);
         console.log(tile.style.left, tile.style.top);
         col ++;
