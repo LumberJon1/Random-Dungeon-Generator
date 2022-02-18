@@ -36,6 +36,9 @@ for (let i = 0; i < numTiles; i++) {
 
 //tile styling algorithm
 let startingTile = Math.floor(Math.random() * (numTiles ** 2)).toString();
+if (startingTile < 10) {
+    startingTile = "0"+startingTile;
+};
 console.log(startingTile);
 let startingTileEl = document.getElementById(startingTile);
 startingTileEl.setAttribute("class", "active branch-tip");
@@ -47,15 +50,30 @@ let numActive = 0;
 //This needs to be done for every active branch.
 if (numActive < dungeonLength) {
 
-    for (; numActive < dungeonLength; numActive++) {
-    
-    }
+    let branchTips = document.getElementsByClassName("branch-tip");
+    for (let i = 0; i < branchTips.length; i++) {
+        //Decide which direction to branch...
+        //Define the ID of each of the possible directions
+        let up = parseInt(branchTips[i].getAttribute("id")) - numTiles;
+        console.log(up);
+        let right = parseInt(branchTips[i].getAttribute("id")) + 1;
+        console.log(right);
+        let down = parseInt(branchTips[i].getAttribute("id")) + numTiles;
+        console.log(down);
+        let left = parseInt(branchTips[i].getAttribute("id")) - 1;
+        console.log(left);
+        //Exclude a direction if it would result in a merged active path
+        
+        //Exclude a direction if it would end outside the grid section
+        
+        //Add the classes "active", "branch-tip" to the branched ends
+
+    };
+
+    //Down: += numTiles;
+    //Left: -= 1;
+    //Right: += 1;
+    //Up: -= numTiles;
+
 }
 
-//Decide which direction to branch
-
-//Exclude a direction if it would result in a merged active path
-
-//Exclude a direction if it would end outside the grid section
-
-//Add the classes "active", "branch-tip" to the branched ends
