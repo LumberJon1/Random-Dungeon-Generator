@@ -16,3 +16,11 @@
     border: 2px solid black;
     position: relative;
 }
+
+.active {
+    background-color: #fcefce;
+}
+
+.branch-tip {
+    background-color: rgb(113, 199, 91);
+}

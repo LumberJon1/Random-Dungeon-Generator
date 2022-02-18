@@ -1,6 +1,7 @@
 //define global constants
 const dungeonGrid = document.getElementById("dungeon-grid-div");
 const numTiles = 10;
+const dungeonLength = 10;
 const activeColor = "#e9d9b0";
 const inactiveColor = "white";
 
@@ -20,7 +21,6 @@ const tileHeight = gridHeight / numTiles;
 for (let i = 0; i < numTiles; i++) {
     let col = 0;
     for (let j = 0; j < numTiles; j++) {
-        console.log("row "+(i + 1)+", column "+(col + 1));
         let tile = document.createElement("div");
         tile.style.border = "1px solid black";
         tile.style.position = "absolute";
@@ -30,7 +30,32 @@ for (let i = 0; i < numTiles; i++) {
         tile.style.height = (tileHeight)+"px";
         tile.setAttribute("id", (i.toString())+(col.toString()));
         dungeonGrid.appendChild(tile);
-        console.log(tile.style.left, tile.style.top);
         col ++;
     }
 }
+
+//tile styling algorithm
+let startingTile = Math.floor(Math.random() * (numTiles ** 2)).toString();
+console.log(startingTile);
+let startingTileEl = document.getElementById(startingTile);
+startingTileEl.setAttribute("class", "active branch-tip");
+
+//Keep track of the number of dungeon tiles activated
+let numActive = 0;
+
+//As long as active < dungeonLength, run a loop to evaluate the algorithm.
+//This needs to be done for every active branch.
+if (numActive < dungeonLength) {
+
+    for (; numActive < dungeonLength; numActive++) {
+    
+    }
+}
+
+//Decide which direction to branch
+
+//Exclude a direction if it would result in a merged active path
+
+//Exclude a direction if it would end outside the grid section
+
+//Add the classes "active", "branch-tip" to the branched ends
