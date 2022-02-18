@@ -48,7 +48,7 @@ let numActive = 0;
 
 //As long as active < dungeonLength, run a loop to evaluate the algorithm.
 //This needs to be done for every active branch.
-if (numActive < dungeonLength) {
+for (; numActive < dungeonLength; numActive++) {
 
     let branchTips = document.getElementsByClassName("branch-tip");
     for (let i = 0; i < branchTips.length; i++) {
